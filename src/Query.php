@@ -2,6 +2,9 @@
 
 namespace MoonlyDays\LaravelSourceQuery;
 
+use Illuminate\Support\Collection;
+use MoonlyDays\LaravelSourceQuery\Responses\Info;
+use MoonlyDays\LaravelSourceQuery\Responses\Player;
 use xPaw\SourceQuery\Exception\AuthenticationException;
 use xPaw\SourceQuery\Exception\InvalidArgumentException;
 use xPaw\SourceQuery\Exception\InvalidPacketException;
@@ -55,19 +58,20 @@ class Query
      * @throws SocketException
      * @throws InvalidPacketException
      */
-    public function info(): array
+    public function info(): Info
     {
-        return $this->query->GetInfo();
+        return new Info($this->query->GetInfo());
     }
 
     /**
      * Returns the data about the players currently on the server.
-     * @throws InvalidPacketException
+     * @return Collection<Player>
      * @throws SocketException
+     * @throws InvalidPacketException
      */
-    public function players(): array
+    public function players(): Collection
     {
-        return $this->query->GetPlayers();
+        return collect($this->query->GetPlayers());
     }
 
     /**
