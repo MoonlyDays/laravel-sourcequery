@@ -2,9 +2,6 @@
     "name": "moonlydays/laravel-sourcequery",
     "description": "A Laravel wrapper for xPaw's SourceQuery package",
     "license": "MIT",
-    "version": "1.0.0",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "homepage": "https://github.com/MoonlyDays/laravel-sourcequery",
     "require": {
         "xpaw/php-source-query-class": "^3.0",
