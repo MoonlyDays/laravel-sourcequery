@@ -1,0 +1,28 @@
+{
+    "name": "moonlydays/laravel-sourcequery",
+    "description": "A Laravel wrapper for xPaw's SourceQuery package",
+    "type": "library",
+    "version": "1.0.0",
+    "require": {
+        "xpaw/php-source-query-class": "^3.0",
+        "illuminate/support": "^11.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "MoonlyDays\\LaravelSourceQuery\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniil Basiuc-Brinzei",
+            "email": "bioxdevcompany@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "SourceQuery": ""
+            }
+        }
+    }
+}
