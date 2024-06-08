@@ -28,11 +28,12 @@ class Query
     }
 
     /**
+     * Sets the RCON password to use in this server query.
      * @throws SocketException
      * @throws InvalidPacketException
      * @throws AuthenticationException
      */
-    public function rconPassword(string $password): static
+    public function withPassword(string $password): static
     {
         $this->query->SetRconPassword($password);
 
@@ -40,6 +41,7 @@ class Query
     }
 
     /**
+     * Returns the rules (console variables) of the target server.
      * @throws InvalidPacketException
      * @throws SocketException
      */
@@ -49,6 +51,7 @@ class Query
     }
 
     /**
+     * Returns the information about the target server.
      * @throws SocketException
      * @throws InvalidPacketException
      */
@@ -58,14 +61,25 @@ class Query
     }
 
     /**
+     * Returns the data about the players currently on the server.
+     * @throws InvalidPacketException
+     * @throws SocketException
+     */
+    public function players(): array
+    {
+        return $this->query->GetPlayers();
+    }
+
+    /**
+     * Send a RCON command to the target server.
      * @throws InvalidPacketException
      * @throws AuthenticationException
      * @throws SocketException
      */
-    public function rcon(string $command, string $rconPassword = null): string
+    public function rcon(string $command, string $password = null): string
     {
-        if (isset($rconPassword)) {
-            $this->rconPassword($rconPassword);
+        if (isset($password)) {
+            $this->withPassword($password);
         }
 
         return $this->query->Rcon($command);
