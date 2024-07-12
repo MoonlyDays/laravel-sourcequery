@@ -5,7 +5,8 @@
     "homepage": "https://github.com/MoonlyDays/laravel-sourcequery",
     "require": {
         "xpaw/php-source-query-class": "^3.0",
-        "illuminate/support": "^11.10"
+        "illuminate/support": "^11.10",
+        "laravel/framework": "^11.15"
     },
     "autoload": {
         "psr-4": {

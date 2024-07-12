@@ -77,15 +77,19 @@ class Query
     /**
      * Send a RCON command to the target server.
      * @throws InvalidPacketException
-     * @throws AuthenticationException
      * @throws SocketException
+     * @throws AuthenticationException
      */
-    public function rcon(string $command, string $password = null): string
+    public function rcon(string $password): RconQuery
     {
-        if (isset($password)) {
-            $this->withPassword($password);
-        }
+        return new RconQuery(
+            $this->query,
+            $password,
 
-        return $this->query->Rcon($command);
+            $this->ip,
+            $this->port,
+            $this->engine,
+            $this->timeout,
+        );
     }
 }
