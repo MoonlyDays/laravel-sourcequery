@@ -39,7 +39,7 @@ class RconQuery
         return $this->query->Rcon($command);
     }
 
-    public function query(string $command): PendingDispatch|PendingClosureDispatch
+    public function queue(string $command): PendingDispatch|PendingClosureDispatch
     {
         return dispatch(new RconJob(
             $this->ip,
