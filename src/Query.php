@@ -24,14 +24,14 @@ class Query
         private readonly int $port,
         private readonly int $timeout,
         private readonly int $engine
-    )
-    {
+    ) {
         $this->query = new xPawSourceQuery();
         $this->query->Connect($this->ip, $this->port, $this->timeout, $this->engine);
     }
 
     /**
      * Sets the RCON password to use in this server query.
+     *
      * @throws SocketException
      * @throws InvalidPacketException
      * @throws AuthenticationException
@@ -45,6 +45,7 @@ class Query
 
     /**
      * Returns the rules (console variables) of the target server.
+     *
      * @throws InvalidPacketException
      * @throws SocketException
      */
@@ -55,6 +56,7 @@ class Query
 
     /**
      * Returns the information about the target server.
+     *
      * @throws SocketException
      * @throws InvalidPacketException
      */
@@ -65,7 +67,9 @@ class Query
 
     /**
      * Returns the data about the players currently on the server.
+     *
      * @return Collection<Player>
+     *
      * @throws SocketException
      * @throws InvalidPacketException
      */
@@ -74,12 +78,6 @@ class Query
         return collect($this->query->GetPlayers());
     }
 
-    /**
-     * Send a RCON command to the target server.
-     * @throws InvalidPacketException
-     * @throws SocketException
-     * @throws AuthenticationException
-     */
     public function rcon(string $password): RconQuery
     {
         return new RconQuery(

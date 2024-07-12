@@ -11,11 +11,6 @@ use xPaw\SourceQuery\SourceQuery as xPawSourceQuery;
 
 class RconQuery
 {
-    /**
-     * @throws InvalidPacketException
-     * @throws SocketException
-     * @throws AuthenticationException
-     */
     public function __construct(
         private readonly xPawSourceQuery $query,
         private readonly string $password,
@@ -24,18 +19,17 @@ class RconQuery
         private readonly int $port,
         private readonly int $timeout,
         private readonly int $engine,
-    )
-    {
-        $this->query->SetRconPassword($this->password);
-    }
+    ) {}
 
     /**
      * @throws InvalidPacketException
-     * @throws SocketException
      * @throws AuthenticationException
+     * @throws SocketException
      */
     public function send(string $command): string
     {
+        $this->query->SetRconPassword($this->password);
+
         return $this->query->Rcon($command);
     }
 

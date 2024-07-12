@@ -2,7 +2,6 @@
 
 namespace MoonlyDays\LaravelSourceQuery;
 
-use App\Models\MatchSearch;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

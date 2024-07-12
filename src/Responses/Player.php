@@ -11,6 +11,4 @@ use MoonlyDays\LaravelSourceQuery\AbstractResponse;
  * @property-read int Time
  * @property-read string TimeF
  */
-class Player extends AbstractResponse
-{
-}
+class Player extends AbstractResponse {}

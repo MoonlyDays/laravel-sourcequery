@@ -25,6 +25,4 @@ use MoonlyDays\LaravelSourceQuery\AbstractResponse;
  * @property-read string GameTags
  * @property-read int GameId
  */
-class Info extends AbstractResponse
-{
-}
+class Info extends AbstractResponse {}

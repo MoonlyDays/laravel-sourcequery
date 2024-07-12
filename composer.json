@@ -25,5 +25,8 @@
                 "SourceQuery": "MoonlyDays\\LaravelSourceQuery\\Facade"
             }
         }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.16"
     }
 }
