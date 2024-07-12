@@ -86,8 +86,8 @@ class Query
 
             $this->ip,
             $this->port,
-            $this->engine,
             $this->timeout,
+            $this->engine,
         );
     }
 }
