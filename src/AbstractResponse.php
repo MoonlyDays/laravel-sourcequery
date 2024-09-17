@@ -3,8 +3,11 @@
 namespace MoonlyDays\LaravelSourceQuery;
 
 use ArrayAccess;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+use JsonSerializable;
 
-abstract class AbstractResponse implements ArrayAccess
+abstract class AbstractResponse implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
 {
     public function __construct(
         public array $response
@@ -38,5 +41,20 @@ abstract class AbstractResponse implements ArrayAccess
     public function offsetUnset(mixed $offset): void
     {
         unset($this->response[$offset]);
+    }
+
+    public function toArray(): array
+    {
+        return $this->response;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
+    }
+
+    public function toJson($options = 0): bool|string
+    {
+        return json_encode($this->jsonSerialize(), $options);
     }
 }
