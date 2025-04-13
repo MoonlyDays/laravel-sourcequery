@@ -2,7 +2,7 @@
 
 namespace MoonlyDays\LaravelSourceQuery\Responses;
 
-use MoonlyDays\LaravelSourceQuery\AbstractResponse;
+use Illuminate\Support\Fluent;
 
 /**
  * @property-read int Protocol
@@ -25,4 +25,4 @@ use MoonlyDays\LaravelSourceQuery\AbstractResponse;
  * @property-read string GameTags
  * @property-read int GameId
  */
-class Info extends AbstractResponse {}
+class Info extends Fluent {}

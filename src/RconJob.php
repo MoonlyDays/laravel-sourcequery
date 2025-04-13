@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use xPaw\SourceQuery\Exception\AuthenticationException;
+use xPaw\SourceQuery\Exception\InvalidArgumentException;
 use xPaw\SourceQuery\Exception\InvalidPacketException;
 use xPaw\SourceQuery\Exception\SocketException;
 
@@ -23,19 +24,22 @@ class RconJob implements ShouldQueue
         public string $port,
         public string $password,
         public string $command,
-        public int $timeout,
-        public int $engine,
-    ) {}
+        public int    $timeout,
+        public int    $engine,
+    )
+    {
+    }
 
     /**
      * @throws InvalidPacketException
      * @throws AuthenticationException
      * @throws SocketException
+     * @throws InvalidArgumentException
      */
     public function handle(): void
     {
         /** @var Query $query */
-        $query = app(Service::class)->query(
+        $query = app(QueryFactory::class)->query(
             $this->ip,
             $this->port,
             $this->timeout,

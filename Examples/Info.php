@@ -1,9 +1,9 @@
 <?php
 
-use MoonlyDays\LaravelSourceQuery\Service;
+use MoonlyDays\LaravelSourceQuery\QueryFactory;
 
 require_once '../vendor/autoload.php';
 
-$service = new Service();
-$info = $service->query('62.122.215.61', 28424)->players();
-print_r($info);
+$service = new QueryFactory;
+$info = $service->query('146.59.52.20', 27015)->info();
+var_dump($info);

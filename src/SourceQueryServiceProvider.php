@@ -8,6 +8,6 @@ class SourceQueryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(Service::class);
+        $this->app->singleton(QueryFactory::class);
     }
 }

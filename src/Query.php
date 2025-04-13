@@ -2,6 +2,7 @@
 
 namespace MoonlyDays\LaravelSourceQuery;
 
+use Exception;
 use Illuminate\Support\Collection;
 use MoonlyDays\LaravelSourceQuery\Responses\Info;
 use MoonlyDays\LaravelSourceQuery\Responses\Player;
@@ -21,11 +22,12 @@ class Query
      */
     public function __construct(
         private readonly string $ip,
-        private readonly int $port,
-        private readonly int $timeout,
-        private readonly int $engine
-    ) {
-        $this->query = new xPawSourceQuery();
+        private readonly int    $port,
+        private readonly int    $timeout,
+        private readonly int    $engine
+    )
+    {
+        $this->query = new xPawSourceQuery;
         $this->query->Connect($this->ip, $this->port, $this->timeout, $this->engine);
     }
 
@@ -68,14 +70,15 @@ class Query
     /**
      * Returns the data about the players currently on the server.
      *
-     * @return Collection<Player>
-     *
-     * @throws SocketException
-     * @throws InvalidPacketException
+     * @return Collection<Player>|bool
      */
-    public function players(): Collection
+    public function players(): Collection|bool
     {
-        return collect($this->query->GetPlayers());
+        try {
+            return collect($this->query->GetPlayers())->mapInto(Player::class);
+        } catch (Exception) {
+            return false;
+        }
     }
 
     public function rcon(string $password): RconQuery

@@ -2,7 +2,7 @@
 
 namespace MoonlyDays\LaravelSourceQuery\Responses;
 
-use MoonlyDays\LaravelSourceQuery\AbstractResponse;
+use Illuminate\Support\Fluent;
 
 /**
  * @property-read int Id
@@ -11,4 +11,4 @@ use MoonlyDays\LaravelSourceQuery\AbstractResponse;
  * @property-read int Time
  * @property-read string TimeF
  */
-class Player extends AbstractResponse {}
+class Player extends Fluent {}

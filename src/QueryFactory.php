@@ -2,11 +2,12 @@
 
 namespace MoonlyDays\LaravelSourceQuery;
 
+
 use xPaw\SourceQuery\Exception\InvalidArgumentException;
 use xPaw\SourceQuery\Exception\SocketException;
 use xPaw\SourceQuery\SourceQuery;
 
-class Service
+class QueryFactory
 {
     /**
      * @throws SocketException
