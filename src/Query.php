@@ -58,13 +58,14 @@ class Query
 
     /**
      * Returns the information about the target server.
-     *
-     * @throws SocketException
-     * @throws InvalidPacketException
      */
-    public function info(): Info
+    public function info(): Info|false
     {
-        return new Info($this->query->GetInfo());
+        try {
+            return new Info($this->query->GetInfo());
+        } catch (Exception) {
+            return false;
+        }
     }
 
     /**
@@ -72,7 +73,7 @@ class Query
      *
      * @return Collection<Player>|bool
      */
-    public function players(): Collection|bool
+    public function players(): Collection|false
     {
         try {
             return collect($this->query->GetPlayers())->mapInto(Player::class);
