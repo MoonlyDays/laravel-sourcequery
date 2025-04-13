@@ -59,26 +59,26 @@ class Query
     /**
      * Returns the information about the target server.
      */
-    public function info(): Info|false
+    public function info(): Info|null
     {
         try {
             return new Info($this->query->GetInfo());
         } catch (Exception) {
-            return false;
+            return null;
         }
     }
 
     /**
      * Returns the data about the players currently on the server.
      *
-     * @return Collection<Player>|bool
+     * @return Collection<Player>|null
      */
-    public function players(): Collection|false
+    public function players(): Collection|null
     {
         try {
             return collect($this->query->GetPlayers())->mapInto(Player::class);
         } catch (Exception) {
-            return false;
+            return null;
         }
     }
 
